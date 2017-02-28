@@ -87,16 +87,16 @@ class GUI
             labels.push_back(std::string("threshold"));
             resLog.SetLabels(labels);
 
-            resPlot = new pangolin::Plotter(&resLog, 0, 300, 0, 0.0005, 30, 0.5);
-            resPlot->Track("$i");
+            //resPlot = new pangolin::Plotter(&resLog, 0, 300, 0, 0.0005, 30, 0.5);
+            //resPlot->Track("$i");
 
             std::vector<std::string> labels2;
             labels2.push_back(std::string("inliers"));
             labels2.push_back(std::string("threshold"));
             inLog.SetLabels(labels2);
 
-            inPlot = new pangolin::Plotter(&inLog, 0, 300, 0, 40000, 30, 0.5);
-            inPlot->Track("$i");
+            //inPlot = new pangolin::Plotter(&inLog, 0, 300, 0, 40000, 30, 0.5);
+           // inPlot->Track("$i");
 
             if(!showcaseMode)
             {
@@ -106,9 +106,9 @@ class GUI
                                           .AddDisplay(pangolin::Display(GPUTexture::RGB))
                                           .AddDisplay(pangolin::Display(GPUTexture::DEPTH_NORM))
                                           .AddDisplay(pangolin::Display("ModelImg"))
-                                          .AddDisplay(pangolin::Display("Model"))
-                                          .AddDisplay(*resPlot)
-                                          .AddDisplay(*inPlot);
+                                          .AddDisplay(pangolin::Display("Model"));
+                                          //.AddDisplay(*resPlot)
+                                          //.AddDisplay(*inPlot);
             }
 
             pause = new pangolin::Var<bool>("ui.Pause", false, true);
@@ -172,8 +172,8 @@ class GUI
         {
             delete pause;
             delete reset;
-            delete inPlot;
-            delete resPlot;
+            //delete inPlot;
+            //delete resPlot;
 
             if(autoSettings)
             {
