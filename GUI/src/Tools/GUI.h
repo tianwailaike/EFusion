@@ -85,7 +85,7 @@ class GUI
             std::vector<std::string> labels;
             labels.push_back(std::string("residual"));
             labels.push_back(std::string("threshold"));
-            resLog.SetLabels(labels);
+            //resLog.SetLabels(labels);
 
             //resPlot = new pangolin::Plotter(&resLog, 0, 300, 0, 0.0005, 30, 0.5);
             //resPlot->Track("$i");
@@ -93,7 +93,7 @@ class GUI
             std::vector<std::string> labels2;
             labels2.push_back(std::string("inliers"));
             labels2.push_back(std::string("threshold"));
-            inLog.SetLabels(labels2);
+            //inLog.SetLabels(labels2);
 
             //inPlot = new pangolin::Plotter(&inLog, 0, 300, 0, 40000, 30, 0.5);
            // inPlot->Track("$i");
@@ -146,7 +146,7 @@ class GUI
             drawWindow = new pangolin::Var<bool>("ui.Draw time window", false, true);
             drawNormals = new pangolin::Var<bool>("ui.Draw normals", false, true);
             drawTimes = new pangolin::Var<bool>("ui.Draw times", false, true);
-            drawDefGraph = new pangolin::Var<bool>("ui.Draw deformation graph", false, true);
+            //drawDefGraph = new pangolin::Var<bool>("ui.Draw deformation graph", false, true);
             drawFerns = new pangolin::Var<bool>("ui.Draw ferns", false, true);
             drawDeforms = new pangolin::Var<bool>("ui.Draw deformations", true, true);
 
@@ -212,7 +212,7 @@ class GUI
             delete drawGlobalModel;
             delete drawUnstable;
             delete drawPoints;
-            delete drawDefGraph;
+            //delete drawDefGraph;
             delete gpuMem;
 
             delete renderBuffer;

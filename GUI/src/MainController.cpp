@@ -226,7 +226,8 @@ void MainController::run()
     while(!pangolin::ShouldQuit() && !((!logReader->hasMore()) && quiet) && !(eFusion->getTick() == end && quiet))
     {
         if(!gui->pause->Get() || pangolin::Pushed(*gui->step))
-        {
+        //if(!gui->pause->Get()) 
+       {
             if((logReader->hasMore() || rewind) && eFusion->getTick() < end)
             {
                 TICK("LogRead");
@@ -419,7 +420,7 @@ void MainController::run()
             }
             glColor3f(1, 1, 1);
         }
-
+/*
         if(gui->drawDefGraph->Get())
         {
             const std::vector<GraphNode*> & graph = eFusion->getLocalDeformation().getGraph();
@@ -442,7 +443,7 @@ void MainController::run()
                 }
             }
         }
-
+*/
         if(eFusion->getFerns().lastClosest != -1)
         {
             glColor3f(1, 0, 0);
