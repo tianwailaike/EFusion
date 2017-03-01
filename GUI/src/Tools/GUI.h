@@ -115,7 +115,7 @@ class GUI
             step = new pangolin::Var<bool>("ui.Step", false, false);
             save = new pangolin::Var<bool>("ui.Save", false, false);
             reset = new pangolin::Var<bool>("ui.Reset", false, false);
-            flipColors = new pangolin::Var<bool>("ui.Flip RGB", false, true);
+            //flipColors = new pangolin::Var<bool>("ui.Flip RGB", false, true);
 
             if(liveCap)
             {
@@ -126,26 +126,27 @@ class GUI
                 autoSettings = 0;
             }
 
-            pyramid = new pangolin::Var<bool>("ui.Pyramid", true, true);
-            so3 = new pangolin::Var<bool>("ui.SO(3)", true, true);
-            frameToFrameRGB = new pangolin::Var<bool>("ui.Frame to frame RGB", false, true);
-            fastOdom = new pangolin::Var<bool>("ui.Fast Odometry", false, true);
-            rgbOnly = new pangolin::Var<bool>("ui.RGB only tracking", false, true);
+            
+            //so3 = new pangolin::Var<bool>("ui.SO(3)", true, true);
+            //frameToFrameRGB = new pangolin::Var<bool>("ui.Frame to frame RGB", false, true);
+            //fastOdom = new pangolin::Var<bool>("ui.Fast Odometry", false, true);
+            //rgbOnly = new pangolin::Var<bool>("ui.RGB only tracking", false, true);
             confidenceThreshold = new pangolin::Var<float>("ui.Confidence threshold", 10.0, 0.0, 24.0);
             depthCutoff = new pangolin::Var<float>("ui.Depth cutoff", 3.0, 0.0, 12.0);
             icpWeight = new pangolin::Var<float>("ui.ICP weight", 10.0, 0.0, 100.0);
 
+	    pyramid = new pangolin::Var<bool>("ui.Pyramid", true, true);
             followPose = new pangolin::Var<bool>("ui.Follow pose", true, true);
-            drawRawCloud = new pangolin::Var<bool>("ui.Draw raw", false, true);
-            drawFilteredCloud = new pangolin::Var<bool>("ui.Draw filtered", false, true);
+            //drawRawCloud = new pangolin::Var<bool>("ui.Draw raw", false, true);
+            //drawFilteredCloud = new pangolin::Var<bool>("ui.Draw filtered", false, true);
             drawGlobalModel = new pangolin::Var<bool>("ui.Draw global model", true, true);
-            drawUnstable = new pangolin::Var<bool>("ui.Draw unstable points", false, true);
+            //drawUnstable = new pangolin::Var<bool>("ui.Draw unstable points", false, true);
             drawPoints = new pangolin::Var<bool>("ui.Draw points", false, true);
             drawColors = new pangolin::Var<bool>("ui.Draw colors", showcaseMode, true);
-            drawFxaa = new pangolin::Var<bool>("ui.Draw FXAA", showcaseMode, true);
-            drawWindow = new pangolin::Var<bool>("ui.Draw time window", false, true);
+            //drawFxaa = new pangolin::Var<bool>("ui.Draw FXAA", showcaseMode, true);
+            //drawWindow = new pangolin::Var<bool>("ui.Draw time window", false, true);
             drawNormals = new pangolin::Var<bool>("ui.Draw normals", false, true);
-            drawTimes = new pangolin::Var<bool>("ui.Draw times", false, true);
+           // drawTimes = new pangolin::Var<bool>("ui.Draw times", false, true);
             //drawDefGraph = new pangolin::Var<bool>("ui.Draw deformation graph", false, true);
             drawFerns = new pangolin::Var<bool>("ui.Draw ferns", false, true);
             drawDeforms = new pangolin::Var<bool>("ui.Draw deformations", true, true);
@@ -186,31 +187,31 @@ class GUI
             delete trackRes;
             delete confidenceThreshold;
             delete totalNodes;
-            delete drawWindow;
-            delete so3;
+            //delete drawWindow;
+            //delete so3;
             delete totalFerns;
             delete totalDefs;
             delete depthCutoff;
             delete logProgress;
-            delete drawTimes;
-            delete drawFxaa;
-            delete fastOdom;
+            //delete drawTimes;
+            //delete drawFxaa;
+            //delete fastOdom;
             delete icpWeight;
             delete pyramid;
-            delete rgbOnly;
+            //delete rgbOnly;
             delete totalFernDefs;
             delete drawFerns;
             delete followPose;
             delete drawDeforms;
-            delete drawRawCloud;
+            //delete drawRawCloud;
             delete totalPoints;
-            delete frameToFrameRGB;
-            delete flipColors;
-            delete drawFilteredCloud;
+            //delete frameToFrameRGB;
+            //delete flipColors;
+            //delete drawFilteredCloud;
             delete drawNormals;
             delete drawColors;
             delete drawGlobalModel;
-            delete drawUnstable;
+            //delete drawUnstable;
             delete drawPoints;
             //delete drawDefGraph;
             delete gpuMem;

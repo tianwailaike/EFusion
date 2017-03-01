@@ -115,15 +115,17 @@ MainController::MainController(int argc, char * argv[])
 
     gui = new GUI(logFile.length() == 0, Parse::get().arg(argc, argv, "-sc", empty) > -1);
 
-    gui->flipColors->Ref().Set(logReader->flipColors);
-    gui->rgbOnly->Ref().Set(false);
-    gui->pyramid->Ref().Set(true);
-    gui->fastOdom->Ref().Set(fastOdom);
+    //gui->flipColors->Ref().Set(logReader->flipColors);
+    //gui->rgbOnly->Ref().Set(false);
+    
+    //gui->fastOdom->Ref().Set(fastOdom);
     gui->confidenceThreshold->Ref().Set(confidence);
     gui->depthCutoff->Ref().Set(depth);
     gui->icpWeight->Ref().Set(icp);
-    gui->so3->Ref().Set(so3);
-    gui->frameToFrameRGB->Ref().Set(frameToFrameRGB);
+    
+    gui->pyramid->Ref().Set(true);
+    //gui->so3->Ref().Set(so3);
+    //gui->frameToFrameRGB->Ref().Set(frameToFrameRGB);
 
     resizeStream = new Resize(Resolution::getInstance().width(),
                               Resolution::getInstance().height(),
@@ -349,11 +351,12 @@ void MainController::run()
         }
 
         Eigen::Matrix4f pose = eFusion->getCurrPose();
-
+/*
         if(gui->drawRawCloud->Get() || gui->drawFilteredCloud->Get())
         {
             eFusion->computeFeedbackBuffers();
         }
+
 
         if(gui->drawRawCloud->Get())
         {
@@ -364,13 +367,14 @@ void MainController::run()
         {
             eFusion->getFeedbackBuffers().at(FeedbackBuffer::FILTERED)->render(gui->s_cam.GetProjectionModelViewMatrix(), pose, gui->drawNormals->Get(), gui->drawColors->Get());
         }
-
+*/
         if(gui->drawGlobalModel->Get())
         {
             glFinish();
             TICK("Global");
 
-            if(gui->drawFxaa->Get())
+            //if(gui->drawFxaa->Get())
+	    if(false)    //to disable the fxaa drawing
             {
                 gui->drawFXAA(gui->s_cam.GetProjectionModelViewMatrix(),
                               gui->s_cam.GetModelViewMatrix(),
@@ -384,12 +388,15 @@ void MainController::run()
             {
                 eFusion->getGlobalModel().renderPointCloud(gui->s_cam.GetProjectionModelViewMatrix(),
                                                            eFusion->getConfidenceThreshold(),
-                                                           gui->drawUnstable->Get(),
+                                                           //gui->drawUnstable->Get(),
+							   false,//default for drawunstable
                                                            gui->drawNormals->Get(),
                                                            gui->drawColors->Get(),
                                                            gui->drawPoints->Get(),
-                                                           gui->drawWindow->Get(),
-                                                           gui->drawTimes->Get(),
+                                                           //gui->drawWindow->Get(),
+							   false,//default for drawWindow
+                                                           //gui->drawTimes->Get(),
+							   false,//default for drawTimes
                                                            eFusion->getTick(),
                                                            eFusion->getTimeDelta());
             }
@@ -530,15 +537,16 @@ void MainController::run()
 
         gui->postCall();
 
-        logReader->flipColors = gui->flipColors->Get();
-        eFusion->setRgbOnly(gui->rgbOnly->Get());
+        //logReader->flipColors = gui->flipColors->Get();
+        //eFusion->setRgbOnly(gui->rgbOnly->Get());
         eFusion->setPyramid(gui->pyramid->Get());
-        eFusion->setFastOdom(gui->fastOdom->Get());
+        //eFusion->setFastOdom(gui->fastOdom->Get());
         eFusion->setConfidenceThreshold(gui->confidenceThreshold->Get());
         eFusion->setDepthCutoff(gui->depthCutoff->Get());
         eFusion->setIcpWeight(gui->icpWeight->Get());
-        eFusion->setSo3(gui->so3->Get());
-        eFusion->setFrameToFrameRGB(gui->frameToFrameRGB->Get());
+        //eFusion->setSo3(gui->so3->Get());
+	eFusion->setSo3(true);//default for the setSo3
+       // eFusion->setFrameToFrameRGB(gui->frameToFrameRGB->Get());
 
         resetButton = pangolin::Pushed(*gui->reset);
 
