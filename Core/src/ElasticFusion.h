@@ -55,7 +55,7 @@ class ElasticFusion
                       const float fernThresh = 0.3095,
                       const bool so3 = true,
                       const bool frameToFrameRGB = false,
-                      const std::string fileName = "");
+                      const std::string fileName = " ");
 
         virtual ~ElasticFusion();
 

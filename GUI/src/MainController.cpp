@@ -570,7 +570,10 @@ void MainController::run()
 
         if(pangolin::Pushed(*gui->save))
         {
+	    std::cout<<"hahaha"<<std::endl;
             eFusion->savePly();
+	    std::cout<<"hahaha"<<std::endl;
+
         }
 
         TOCK("GUI");

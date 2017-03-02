@@ -717,13 +717,16 @@ void ElasticFusion::normaliseDepth(const float & minVal, const float & maxVal)
 
 void ElasticFusion::savePly()
 {
-    std::string filename = saveFilename;
-    filename.append(".ply");
 
+    std::string filename = saveFilename;
+    
+
+    filename.append(".ply");
+    std::cout <<"fuck it real time 2"<<std::endl;
     // Open file
     std::ofstream fs;
     fs.open (filename.c_str ());
-
+    std::cout <<"fuck it real time"<<std::endl;
     Eigen::Vector4f * mapData = globalModel.downloadMap();
 
     int validCount = 0;
@@ -762,14 +765,14 @@ void ElasticFusion::savePly()
 
     // Close the file
     fs.close ();
-
+std::cout <<"fuck it real time 3"<<std::endl;
     // Open file in binary appendable
     std::ofstream fpout (filename.c_str (), std::ios::app | std::ios::binary);
-
+std::cout <<"fuck it real time 4"<<std::endl;
     for(unsigned int i = 0; i < globalModel.lastCount(); i++)
     {
         Eigen::Vector4f pos = mapData[(i * 3) + 0];
-
+//std::cout <<"fuck it real time 5"<<std::endl;
         if(pos[3] > confidenceThreshold)
         {
             Eigen::Vector4f col = mapData[(i * 3) + 1];
